@@ -9,7 +9,7 @@ public class DatabaseHelper {
             connection = new Connection("localhost", "root", "root");
         }
 
-        return
+        return connection;
     }
 
 }
