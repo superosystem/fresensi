@@ -56,4 +56,15 @@ class Store
         $this->category = $category;
         return $this;
     }
+
+    public function clone(): Store 
+    {
+        // return new Store(
+        //     $this->name,
+        //     $this->city,
+        //     $this->caountry,
+        //     $this->category
+        // );
+        return clone $this;
+    }
 }
