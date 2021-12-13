@@ -1,5 +1,7 @@
 package com.gusrylmubarok.designpattern.repository;
 
+import java.util.List;
+
 public class RepositoryApp {
 
     public static void main(String[] args) {
@@ -8,11 +10,20 @@ public class RepositoryApp {
         product.setName("Contoh 1");
         product.setPrice(1000);
 
-        DatabasePool.getConnection().sql("INSERT INTO products(id, name, price) values (?, ?, ?)",
-            product.getId(), product.getName(), product.getPrice());
+        ProductRepository repository = new ProductRepository();
+        repository.insert(product);
 
-        DatabasePool.getConnection().sql("UPDATE products set name = ?, price= ? WHERE id = ?",
-                product.getName(), product.getPrice(), product.getId());
+        product.setPrice(2000);
+
+        repository.update(product);
+
+        repository.delete(product.getId());
+
+        List<Product> products = repository.selectAll();
+
+
+
+
     }
 
 }
