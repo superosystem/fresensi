@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "82606896608",
+    "project_id": "fresensi-726e5",
+    "storage_bucket": "fresensi-726e5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:82606896608:android:be666372056d7860292785",
+        "android_client_info": {
+          "package_name": "com.gusrylmubarok.fresensi.fresensi"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "82606896608-01867rcfjo2kdt381hffujrr2sh9p8kl.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAfcSGVoYknycam9i8pFlARehof4sQLaM0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "82606896608-01867rcfjo2kdt381hffujrr2sh9p8kl.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

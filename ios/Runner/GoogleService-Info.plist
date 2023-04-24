@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>913520851163-bletpu5atra10d16t1rh521cqpolbcco.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.913520851163-bletpu5atra10d16t1rh521cqpolbcco</string>
+	<key>API_KEY</key>
+	<string>AIzaSyAPjl-LpufoBELu1SE1lMMgXGDrAvNPZwI</string>
+	<key>GCM_SENDER_ID</key>
+	<string>913520851163</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.gusrylmubarok.fresensi.fresensi</string>
+	<key>PROJECT_ID</key>
+	<string>fresensi-project</string>
+	<key>STORAGE_BUCKET</key>
+	<string>fresensi-project.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:913520851163:ios:8dcb9d0ea9a371a9ff74fe</string>
+</dict>
+</plist>
