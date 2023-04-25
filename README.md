@@ -2,6 +2,7 @@
 
 Fresensi Mobile Application
 
-## Getting Started
+## Information
 
-- [Flutter CLI](https://firebase.google.com/docs/flutter/setup?platform=ios)
+- Roles [employee or admin]
+- 
