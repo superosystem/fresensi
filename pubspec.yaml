@@ -18,9 +18,12 @@ dependencies:
   get: 4.6.5
   flutter: 
     sdk: flutter
+  email_validator: ^2.1.17
 
 dev_dependencies: 
   flutter_lints: ^2.0.0
   flutter_test: 
     sdk: flutter
 
+flutter:
+  uses-material-design: true
