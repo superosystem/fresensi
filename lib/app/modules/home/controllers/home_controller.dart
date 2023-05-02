@@ -1,12 +1,23 @@
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:fresensi/app/routes/app_pages.dart';
 import 'package:get/get.dart';
 
 class HomeController extends GetxController {
-  late FirebaseAuth auth;
+  //TODO: Implement HomeController
 
-  void logout() async {
-    await auth.signOut();
-    Get.offAllNamed(Routes.login);
+  final count = 0.obs;
+  @override
+  void onInit() {
+    super.onInit();
   }
+
+  @override
+  void onReady() {
+    super.onReady();
+  }
+
+  @override
+  void onClose() {
+    super.onClose();
+  }
+
+  void increment() => count.value++;
 }

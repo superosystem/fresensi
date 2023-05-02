@@ -29,6 +29,13 @@
             {
               "client_id": "82606896608-01867rcfjo2kdt381hffujrr2sh9p8kl.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "82606896608-edfert8rte00v6ij7blf9f7fq0a51s34.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.gusrylmubarok.fresensi.fresensi"
+              }
             }
           ]
         }
