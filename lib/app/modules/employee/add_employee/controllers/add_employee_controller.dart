@@ -27,7 +27,7 @@ class AddEmployeeController extends GetxController {
         // getting credential user.
         if (userCredential.user != null) {
           String uid = userCredential.user!.uid;
-          // store to firestore (employee)
+          // store to fire store (employee)
           firestore.collection("employee").doc(uid).set({
             "id": idC.text,
             "name": nameC.text,
@@ -35,6 +35,9 @@ class AddEmployeeController extends GetxController {
             "uid": uid,
             "createdAt": DateTime.now().toIso8601String(),
           });
+
+          // send email verification
+          await userCredential.user!.sendEmailVerification();
         }
 
       } on FirebaseAuthException catch (err) {

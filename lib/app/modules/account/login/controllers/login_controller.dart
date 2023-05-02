@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:fresensi/app/data/constants.dart';
 import 'package:fresensi/app/routes/app_pages.dart';
 import 'package:get/get.dart';
 
@@ -19,18 +20,48 @@ class LoginController extends GetxController {
           password: passwordC.text,
         );
         // check user credential
-        if(userCredential.user != null) {
-          if(userCredential.user!.emailVerified == true) {
-            // Route to home
-            Get.offAllNamed(Routes.HOME);
-          }else{
+        if (userCredential.user != null) {
+          if (userCredential.user!.emailVerified == true) {
+            // check password should not use default password
+            if (passwordC.text == defaultPasswordUser) {
+              // route new password
+              Get.offAllNamed(Routes.NEW_PASSWORD);
+            }else{
+              // Route to home
+              Get.offAllNamed(Routes.HOME);
+            }
+          } else {
             Get.defaultDialog(
               title: "Account need verification",
-              middleText: "You should verify that email."
+              middleText: "You should verify that email.",
+              actions: [
+                OutlinedButton(
+                  onPressed: () => Get.back(),
+                  child: const Text("Cancel"),
+                ),
+                ElevatedButton(
+                  onPressed: () async {
+                    try {
+                      // send email verification
+                      await userCredential.user!.sendEmailVerification();
+                      Get.back();
+
+                      Get.snackbar(
+                          "Success", "Email verification has been send");
+                    } catch (err) {
+                      if (kDebugMode) {
+                        print(err.toString());
+                      }
+                      Get.snackbar("Problem occurred",
+                          "Can not send email verification");
+                    }
+                  },
+                  child: const Text("Verify Email"),
+                ),
+              ],
             );
           }
         }
-
       } on FirebaseAuthException catch (err) {
         if (err.code == 'user-not-found') {
           if (kDebugMode) {
