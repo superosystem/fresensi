@@ -23,14 +23,14 @@ class AppPages {
       binding: LoginBinding(),
     ),
     GetPage(
-      name: _Paths.NEW_PASSWORD,
-      page: () => const NewPasswordView(),
-      binding: NewPasswordBinding(),
-    ),
-    GetPage(
       name: _Paths.HOME,
       page: () => const HomeView(),
       binding: HomeBinding(),
+    ),
+    GetPage(
+      name: _Paths.NEW_PASSWORD,
+      page: () => const NewPasswordView(),
+      binding: NewPasswordBinding(),
     ),
     GetPage(
       name: _Paths.ADD_EMPLOYEE,

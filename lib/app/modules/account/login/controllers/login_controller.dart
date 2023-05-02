@@ -3,6 +3,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:fresensi/app/data/constants.dart';
 import 'package:fresensi/app/routes/app_pages.dart';
+import 'package:fresensi/app/widgets/toast_custom.dart';
 import 'package:get/get.dart';
 
 class LoginController extends GetxController {
@@ -26,7 +27,7 @@ class LoginController extends GetxController {
             if (passwordC.text == defaultPasswordUser) {
               // route new password
               Get.offAllNamed(Routes.NEW_PASSWORD);
-            }else{
+            } else {
               // Route to home
               Get.offAllNamed(Routes.HOME);
             }
@@ -46,14 +47,12 @@ class LoginController extends GetxController {
                       await userCredential.user!.sendEmailVerification();
                       Get.back();
 
-                      Get.snackbar(
-                          "Success", "Email verification has been send");
+                      ToastCustom.successToast("Success", "Email verification has been send");
                     } catch (err) {
                       if (kDebugMode) {
                         print(err.toString());
                       }
-                      Get.snackbar("Problem occurred",
-                          "Can not send email verification");
+                      ToastCustom.errorToast("Problem occurred", "Can not send email verification");
                     }
                   },
                   child: const Text("Verify Email"),
@@ -67,17 +66,17 @@ class LoginController extends GetxController {
           if (kDebugMode) {
             print("No user found for that email.");
           }
-          Get.snackbar("Problem occurred", "Email is not registered");
+          ToastCustom.errorToast("Problem occurred", "Email is not registered");
         } else if (err.code == 'wrong-password') {
           if (kDebugMode) {
             print("Wrong password provided for that user.");
           }
-          Get.snackbar(
+          ToastCustom.errorToast(
               "Problem occurred", "Wrong password provided for that user");
         }
       }
     } else {
-      Get.snackbar("Problem occurred", "All fields can not be empty");
+      ToastCustom.errorToast("Problem occurred", "All fields can not be empty");
     }
   }
 }
