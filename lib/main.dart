@@ -33,7 +33,7 @@ void main() async {
         return GetMaterialApp(
           title: "Fresensi",
           initialRoute: snapshot.data != null ? Routes.HOME : Routes.LOGIN,
-          // initialRoute: Routes.HOME,
+          // initialRoute: Routes.NEW_PASSWORD,
           getPages: AppPages.routes,
         );
       },
