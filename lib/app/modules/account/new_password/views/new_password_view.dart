@@ -30,7 +30,7 @@ class NewPasswordView extends GetView<NewPasswordController> {
         shrinkWrap: true,
         children: [
           Container(
-            height: MediaQuery.of(context).size.height * 35 / 100,
+            height: MediaQuery.of(context).size.height * 25 / 100,
             width: MediaQuery.of(context).size.width,
             padding: const EdgeInsets.only(left: 32),
             decoration: BoxDecoration(
@@ -57,7 +57,7 @@ class NewPasswordView extends GetView<NewPasswordController> {
             ),
           ),
           Container(
-            height: MediaQuery.of(context).size.height * 65 / 100,
+            height: MediaQuery.of(context).size.height * 75 / 100,
             width: MediaQuery.of(context).size.width,
             color: Colors.white,
             padding: const EdgeInsets.all(20),

@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:fresensi/app/data/app_color.dart';
+import 'package:fresensi/app/widgets/input_custom.dart';
 import 'package:get/get.dart';
 
 import '../controllers/add_employee_controller.dart';
@@ -10,45 +13,76 @@ class AddEmployeeView extends GetView<AddEmployeeController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('New Employee'),
+        title: Text(
+          'New Employee',
+          style: TextStyle(
+            color: AppColor.secondary,
+            fontSize: 14,
+          ),
+        ),
+        leading: IconButton(
+          onPressed: () => Get.back(),
+          icon: SvgPicture.asset('assets/icons/arrow-left.svg'),
+        ),
+        backgroundColor: AppColor.white,
+        elevation: 0,
         centerTitle: true,
+        bottom: PreferredSize(
+          preferredSize: const Size.fromHeight(1),
+          child: Container(
+            width: MediaQuery.of(context).size.width,
+            height: 1,
+            color: AppColor.secondaryExtraSoft,
+          ),
+        ),
       ),
       body: ListView(
-        padding: EdgeInsets.all(20),
+        shrinkWrap: true,
+        physics: const BouncingScrollPhysics(),
+        padding: const EdgeInsets.all(20),
         children: [
-          TextField(
+          InputCustom(
             controller: controller.idC,
+            label: 'ID',
+            hint: 'EMP10101101',
             maxLength: 10,
-            maxLines: 1,
-            decoration: const InputDecoration(
-              labelText: "ID",
-              border: OutlineInputBorder(),
-            ),
           ),
-          const SizedBox(height: 20),
-          TextField(
+          InputCustom(
             controller: controller.nameC,
-            decoration: const InputDecoration(
-              labelText: "Name",
-              border: OutlineInputBorder(),
-            ),
+            label: 'Name',
+            hint: 'John Doe',
           ),
-          const SizedBox(height: 20),
-          TextField(
+          InputCustom(
             controller: controller.emailC,
-            decoration: const InputDecoration(
-              labelText: "Email",
-              border: OutlineInputBorder(),
-            ),
+            label: 'Email',
+            hint: 'johndoe@email.com',
           ),
-          const SizedBox(height: 20),
-          SizedBox(
-            height: 50,
-            child: ElevatedButton(
-              onPressed: () {
-                controller.addEmployee();
-              },
-              child: Text("SUBMIT"),
+          const SizedBox(height: 8),
+          Container(
+            width: MediaQuery.of(context).size.width,
+            child: Obx(
+              () => ElevatedButton(
+                onPressed: () {
+                  if (controller.isLoading.isFalse) {
+                    controller.addEmployee();
+                  }
+                },
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: AppColor.primary,
+                  padding: const EdgeInsets.symmetric(vertical: 16),
+                  elevation: 0,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                ),
+                child: Text(
+                  (controller.isLoading.isFalse) ? 'Submit' : 'Loading...',
+                  style: const TextStyle(
+                    fontSize: 16,
+                    fontFamily: 'poppins',
+                  ),
+                ),
+              ),
             ),
           ),
         ],

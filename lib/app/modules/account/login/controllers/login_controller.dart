@@ -3,6 +3,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:fresensi/app/data/constants.dart';
 import 'package:fresensi/app/routes/app_pages.dart';
+import 'package:fresensi/app/widgets/dialog_custom.dart';
 import 'package:fresensi/app/widgets/toast_custom.dart';
 import 'package:get/get.dart';
 
@@ -37,33 +38,27 @@ class LoginController extends GetxController {
               Get.offAllNamed(Routes.HOME);
             }
           } else {
-            Get.defaultDialog(
+            DialogAlertCustom.showPresenceAlert(
               title: "Account need verification",
-              middleText: "You should verify that email.",
-              actions: [
-                OutlinedButton(
-                  onPressed: () => Get.back(),
-                  child: const Text("Cancel"),
-                ),
-                ElevatedButton(
-                  onPressed: () async {
-                    try {
-                      // send email verification
-                      await userCredential.user!.sendEmailVerification();
-                      Get.back();
+              message: "Are you want to send email verification?",
+              onConfirm: () async {
+                try {
+                  // send email verification
+                  await userCredential.user!.sendEmailVerification();
+                  Get.back();
 
-                      ToastCustom.successToast("Success", "Email verification has been send");
-                      isLoading.value = false;
-                    } catch (err) {
-                      if (kDebugMode) {
-                        print(err.toString());
-                      }
-                      ToastCustom.errorToast("Problem occurred", "Can not send email verification");
-                    }
-                  },
-                  child: const Text("Verify Email"),
-                ),
-              ],
+                  ToastCustom.successToast(
+                      "Success", "We have send verification to your email");
+                  isLoading.value = false;
+                } catch (e) {
+                  if (kDebugMode) {
+                    print(e.toString());
+                  }
+                  ToastCustom.errorToast(
+                      "Problem occurred", "Can not send email verification");
+                }
+              },
+              onCancel: () => Get.back(),
             );
           }
         }

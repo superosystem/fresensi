@@ -8,6 +8,7 @@ class InputCustom extends StatefulWidget {
   final bool disabled;
   final EdgeInsetsGeometry margin;
   final bool obsecureText;
+  final int? maxLength;
   final Widget? suffixIcon;
 
   const InputCustom({
@@ -18,6 +19,7 @@ class InputCustom extends StatefulWidget {
     this.disabled = false,
     this.margin = const EdgeInsets.only(bottom: 16),
     this.obsecureText = false,
+    this.maxLength,
     this.suffixIcon,
   });
 
@@ -45,6 +47,7 @@ class _InputCustomState extends State<InputCustom> {
           readOnly: widget.disabled,
           obscureText: widget.obsecureText,
           style: const TextStyle(fontSize: 14, fontFamily: 'poppins'),
+          maxLength: widget.maxLength,
           maxLines: 1,
           controller: widget.controller,
           decoration: InputDecoration(
