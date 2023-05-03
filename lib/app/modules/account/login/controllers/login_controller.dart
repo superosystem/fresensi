@@ -7,13 +7,17 @@ import 'package:fresensi/app/widgets/toast_custom.dart';
 import 'package:get/get.dart';
 
 class LoginController extends GetxController {
+  RxBool isLoading = false.obs;
+  RxBool obsecureText = true.obs;
+
   TextEditingController emailC = TextEditingController();
   TextEditingController passwordC = TextEditingController();
 
   FirebaseAuth auth = FirebaseAuth.instance;
 
-  void login() async {
+  Future<void> login() async {
     if (emailC.text.isNotEmpty && passwordC.text.isNotEmpty) {
+      isLoading.value = true;
       try {
         // signIn with email and password
         UserCredential userCredential = await auth.signInWithEmailAndPassword(
@@ -23,6 +27,7 @@ class LoginController extends GetxController {
         // check user credential
         if (userCredential.user != null) {
           if (userCredential.user!.emailVerified == true) {
+            isLoading.value = false;
             // check password should not use default password
             if (passwordC.text == defaultPasswordUser) {
               // route new password
@@ -48,6 +53,7 @@ class LoginController extends GetxController {
                       Get.back();
 
                       ToastCustom.successToast("Success", "Email verification has been send");
+                      isLoading.value = false;
                     } catch (err) {
                       if (kDebugMode) {
                         print(err.toString());
@@ -61,7 +67,9 @@ class LoginController extends GetxController {
             );
           }
         }
+        isLoading.value = false;
       } on FirebaseAuthException catch (err) {
+        isLoading.value = false;
         if (err.code == 'user-not-found') {
           if (kDebugMode) {
             print("No user found for that email.");
