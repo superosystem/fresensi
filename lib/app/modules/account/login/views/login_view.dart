@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:fresensi/app/data/app_color.dart';
+import 'package:fresensi/app/routes/app_pages.dart';
 import 'package:get/get.dart';
 
 import '../controllers/login_controller.dart';
@@ -178,7 +179,7 @@ class LoginView extends GetView<LoginController> {
                   margin: const EdgeInsets.only(top: 4),
                   alignment: Alignment.centerLeft,
                   child: TextButton(
-                    onPressed: () {},
+                    onPressed: () => Get.toNamed(Routes.FORGOT_PASSWORD),
                     style: TextButton.styleFrom(
                       foregroundColor: AppColor.secondarySoft
                     ),
