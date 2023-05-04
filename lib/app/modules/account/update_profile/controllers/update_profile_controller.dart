@@ -19,6 +19,7 @@ class UpdateProfileController extends GetxController {
   TextEditingController idC = TextEditingController();
   TextEditingController nameC = TextEditingController();
   TextEditingController emailC = TextEditingController();
+  TextEditingController jobC = TextEditingController();
 
   FirebaseFirestore firestore = FirebaseFirestore.instance;
   FirebaseAuth auth = FirebaseAuth.instance;
@@ -30,6 +31,7 @@ class UpdateProfileController extends GetxController {
     idC.text = user['id'];
     nameC.text = user['name'];
     emailC.text = user['email'];
+    jobC.text = user['job'];
   }
 
   Future<void> updateProfile() async {
@@ -45,6 +47,7 @@ class UpdateProfileController extends GetxController {
         // update data
         Map<String, dynamic> data = {
           "name": nameC.text,
+          "job": jobC.text,
         };
         if (image != null) {
           // upload avatar image to storage

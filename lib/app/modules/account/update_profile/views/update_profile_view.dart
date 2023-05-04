@@ -134,6 +134,11 @@ class UpdateProfileView extends GetView<UpdateProfileController> {
             hint: "Your Full Name",
           ),
           InputCustom(
+            controller: controller.jobC,
+            label: "Job",
+            hint: "Developer",
+          ),
+          InputCustom(
             controller: controller.emailC,
             label: "Email",
             hint: "agus.kumaha@email.com",

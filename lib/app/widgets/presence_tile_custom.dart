@@ -32,7 +32,7 @@ class PresenceTileCustom extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      "check in",
+                      "Check In",
                       style: TextStyle(fontSize: 12),
                     ),
                     SizedBox(height: 6),
@@ -50,7 +50,7 @@ class PresenceTileCustom extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      "check out",
+                      "Check Out",
                       style: TextStyle(fontSize: 12),
                     ),
                     SizedBox(height: 6),
@@ -66,10 +66,10 @@ class PresenceTileCustom extends StatelessWidget {
               ],
             ),
             Text(
-              "12:00",
+              "Wed, May 4 2023",
               style: TextStyle(
                 fontSize: 10,
-                color: AppColor.secondarySoft,
+                color: AppColor.secondary,
               ),
             ),
           ],

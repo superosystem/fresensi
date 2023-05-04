@@ -2,7 +2,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:fresensi/app/data/app_color.dart';
 
 class PresenceCardCustom extends StatelessWidget {
-  const PresenceCardCustom({super.key});
+  final Map<String, dynamic> user;
+
+  PresenceCardCustom({super.key, required this.user});
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +24,7 @@ class PresenceCardCustom extends StatelessWidget {
         children: [
           // SECTION JOB TITLE
           Text(
-            "Tester",
+            user['job'].toString().toUpperCase(),
             style: TextStyle(
               color: AppColor.white,
               fontFamily: 'poppins',
@@ -33,7 +35,7 @@ class PresenceCardCustom extends StatelessWidget {
           Container(
             margin: const EdgeInsets.only(top: 4, bottom: 12),
             child: Text(
-              "1234567890",
+              user['id'].toString().toUpperCase(),
               style: TextStyle(
                 color: AppColor.white,
                 fontFamily: 'poppins',
@@ -68,7 +70,7 @@ class PresenceCardCustom extends StatelessWidget {
                         ),
                       ),
                       Text(
-                        "TODAY",
+                        "08:00 AM",
                         style: TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.w700,
@@ -90,7 +92,7 @@ class PresenceCardCustom extends StatelessWidget {
                       Container(
                         margin: const EdgeInsets.only(bottom: 6),
                         child: Text(
-                          "Check In",
+                          "Check Out",
                           style: TextStyle(
                             fontSize: 12,
                             color: AppColor.white,
@@ -98,7 +100,7 @@ class PresenceCardCustom extends StatelessWidget {
                         ),
                       ),
                       Text(
-                        "TODAY",
+                        "05:00 PM",
                         style: TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.w700,

@@ -57,8 +57,13 @@ class AddEmployeeView extends GetView<AddEmployeeController> {
             label: 'Email',
             hint: 'johndoe@email.com',
           ),
+          InputCustom(
+            controller: controller.jobC,
+            label: 'Job',
+            hint: 'Developer',
+          ),
           const SizedBox(height: 8),
-          Container(
+          SizedBox(
             width: MediaQuery.of(context).size.width,
             child: Obx(
               () => ElevatedButton(

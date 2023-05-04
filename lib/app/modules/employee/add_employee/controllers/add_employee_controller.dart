@@ -14,6 +14,7 @@ class AddEmployeeController extends GetxController {
   TextEditingController idC = TextEditingController();
   TextEditingController nameC = TextEditingController();
   TextEditingController emailC = TextEditingController();
+  TextEditingController jobC = TextEditingController();
   TextEditingController passwdAdminC = TextEditingController();
 
   FirebaseAuth auth = FirebaseAuth.instance;
@@ -22,7 +23,7 @@ class AddEmployeeController extends GetxController {
   void addEmployee() async {
     if (idC.text.isNotEmpty &&
         nameC.text.isNotEmpty &&
-        emailC.text.isNotEmpty) {
+        emailC.text.isNotEmpty && jobC.text.isNotEmpty) {
       isLoading.value = true;
       DialogAlertCustom.confirmAdmin(
           title: "Admin Confirmation",
@@ -71,6 +72,7 @@ class AddEmployeeController extends GetxController {
             "email": emailC.text,
             "uid": uid,
             "role": defaultRoleUser,
+            "job": jobC.text,
             "avatar": "",
             "created_at": DateTime.now().toIso8601String(),
           });
