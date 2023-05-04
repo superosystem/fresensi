@@ -1,6 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:convex_bottom_bar/convex_bottom_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:fresensi/app/controllers/PageIndexController.dart';
 import 'package:fresensi/app/data/app_color.dart';
 import 'package:fresensi/app/data/constants.dart';
 import 'package:fresensi/app/routes/app_pages.dart';
@@ -9,16 +11,13 @@ import 'package:get/get.dart';
 import '../controllers/profile_controller.dart';
 
 class ProfileView extends GetView<ProfileController> {
-  const ProfileView({Key? key}) : super(key: key);
+  final pageIndexC = Get.find<PageIndexController>();
+
+  ProfileView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('PROFILE'),
-        centerTitle: true,
-        elevation: 0,
-      ),
       body: StreamBuilder<DocumentSnapshot<Map<String, dynamic>>>(
         stream: controller.streamUser(),
         builder: (context, snapshot) {
@@ -32,7 +31,7 @@ class ProfileView extends GetView<ProfileController> {
               shrinkWrap: true,
               physics: const BouncingScrollPhysics(),
               children: [
-                const SizedBox(height: 16),
+                const SizedBox(height: 36),
                 // SECTION 1 - profile
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
@@ -117,6 +116,18 @@ class ProfileView extends GetView<ProfileController> {
             return const Center(child: Text("Can not found."));
           }
         },
+      ),
+      extendBody: true,
+      bottomNavigationBar: ConvexAppBar(
+        backgroundColor: AppColor.primary,
+        style: TabStyle.fixedCircle,
+        items: const [
+          TabItem(icon: Icons.home, title: "Home"),
+          TabItem(icon: Icons.fingerprint, title: "Attend"),
+          TabItem(icon: Icons.person, title: "Profile"),
+        ],
+        initialActiveIndex: pageIndexC.pageIndex.value,
+        onTap: (int index) => pageIndexC.changePage(index),
       ),
     );
   }

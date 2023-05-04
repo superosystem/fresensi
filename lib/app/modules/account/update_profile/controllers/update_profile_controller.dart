@@ -51,6 +51,7 @@ class UpdateProfileController extends GetxController {
           File file = File(image!.path);
           String ext = image!.name.split(".").last;
           String upDir = "$uid/avatar.$ext";
+          // on upload avatar
           await storage.ref(upDir).putFile(file);
           String avatarUrl = await storage.ref(upDir).getDownloadURL();
 

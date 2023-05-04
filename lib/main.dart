@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:fresensi/app/controllers/PageIndexController.dart';
 import 'package:get/get.dart';
 
 import 'app/routes/app_pages.dart';
@@ -12,6 +13,8 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+
+  final pageIndexC = Get.put(PageIndexController(), permanent: true);
 
   runApp(
     StreamBuilder<User?>(
@@ -33,8 +36,11 @@ void main() async {
         return GetMaterialApp(
           title: "Fresensi",
           initialRoute: snapshot.data != null ? Routes.HOME : Routes.LOGIN,
-          // initialRoute: Routes.NEW_PASSWORD,
           getPages: AppPages.routes,
+          theme: ThemeData(
+            scaffoldBackgroundColor: Colors.white,
+            fontFamily: 'inter',
+          ),
         );
       },
     ),
