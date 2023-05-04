@@ -6,6 +6,7 @@ import 'package:fresensi/app/controllers/PageIndexController.dart';
 import 'package:fresensi/app/data/app_color.dart';
 import 'package:fresensi/app/data/constants.dart';
 import 'package:fresensi/app/routes/app_pages.dart';
+import 'package:fresensi/app/widgets/convex_appbar_custom.dart';
 import 'package:get/get.dart';
 
 import '../controllers/profile_controller.dart';
@@ -118,17 +119,7 @@ class ProfileView extends GetView<ProfileController> {
         },
       ),
       extendBody: true,
-      bottomNavigationBar: ConvexAppBar(
-        backgroundColor: AppColor.primary,
-        style: TabStyle.fixedCircle,
-        items: const [
-          TabItem(icon: Icons.home, title: "Home"),
-          TabItem(icon: Icons.fingerprint, title: "Attend"),
-          TabItem(icon: Icons.person, title: "Profile"),
-        ],
-        initialActiveIndex: pageIndexC.pageIndex.value,
-        onTap: (int index) => pageIndexC.changePage(index),
-      ),
+      bottomNavigationBar: ConvexAppBarCustom(pageIndexC.pageIndex.value),
     );
   }
 }
