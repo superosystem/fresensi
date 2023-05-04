@@ -86,7 +86,7 @@ class HomeView extends GetView<HomeController> {
                       const Icon(Icons.location_on),
                       const SizedBox(width: 2),
                       Text(
-                        "Stasiun Luar Angkasa",
+                        (user["position"] != null) ? user["position"] : "Stasiun Luar Angkasa",
                         style: TextStyle(
                           fontSize: 12,
                           color: AppColor.secondarySoft,
