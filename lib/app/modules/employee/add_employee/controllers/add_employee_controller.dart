@@ -70,6 +70,7 @@ class AddEmployeeController extends GetxController {
             "name": nameC.text,
             "email": emailC.text,
             "uid": uid,
+            "role": defaultRoleUser,
             "created_at": DateTime.now().toIso8601String(),
           });
 

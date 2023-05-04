@@ -75,7 +75,7 @@ class LoginController extends GetxController {
             print("Wrong password provided for that user.");
           }
           ToastCustom.errorToast(
-              "Problem occurred", "Wrong password provided for that user");
+              "Problem occurred", "Wrong password for that user");
         }
       }
     } else {
