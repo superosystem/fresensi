@@ -14,7 +14,7 @@ class UpdatePasswordView extends GetView<UpdatePasswordController> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'Change Password',
+          'CHANGE PASSWORD',
           style: TextStyle(
             color: AppColor.secondary,
             fontSize: 14,
