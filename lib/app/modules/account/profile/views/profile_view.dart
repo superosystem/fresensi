@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:fresensi/app/data/app_color.dart';
 import 'package:fresensi/app/data/constants.dart';
+import 'package:fresensi/app/routes/app_pages.dart';
 import 'package:get/get.dart';
 
 import '../controllers/profile_controller.dart';
@@ -40,7 +41,7 @@ class ProfileView extends GetView<ProfileController> {
                       child: Container(
                         width: 100,
                         height: 100,
-                        color: AppColor.primary,
+                        color: AppColor.secondarySoft,
                         child: Image.network(
                           (user["avatar"] == null || user['avatar'] == "")
                               ? "$defaultAvatarUrl + ${user['name']}"
@@ -63,35 +64,41 @@ class ProfileView extends GetView<ProfileController> {
                     ),
                   ],
                 ),
-                const SizedBox(height: 10),
+                const SizedBox(height: 16),
                 // SECTION 2 - menu
-                SizedBox(
+                Container(
                   width: MediaQuery.of(context).size.width,
+                  margin: const EdgeInsets.only(top: 10),
                   child: Column(
                     children: [
                       MenuTile(
-                        onTap: () {},
+                        onTap: () =>
+                            Get.toNamed(Routes.UPDATE_PROFILE, arguments: user),
                         icon: SvgPicture.asset(
                           'assets/icons/profile-1.svg',
                         ),
                         title: 'Change Profile',
                       ),
                       MenuTile(
-                        onTap: () {},
+                        onTap: () => Get.toNamed(Routes.UPDATE_PASSWORD),
                         icon: SvgPicture.asset(
                           'assets/icons/password.svg',
                         ),
                         title: 'Change Password',
                       ),
+                      (user['role'] == 'admin')
+                          ? MenuTile(
+                              onTap: () => Get.toNamed(Routes.ADD_EMPLOYEE),
+                              icon: SvgPicture.asset(
+                                'assets/icons/people.svg',
+                              ),
+                              title: 'New Employee',
+                            )
+                          : const SizedBox(),
                       MenuTile(
-                        onTap: () {},
-                        icon: SvgPicture.asset(
-                          'assets/icons/people.svg',
-                        ),
-                        title: 'New Employee',
-                      ),
-                      MenuTile(
-                        onTap: () {},
+                        onTap: () async {
+                          await controller.logout();
+                        },
                         icon: SvgPicture.asset(
                           'assets/icons/logout.svg',
                         ),
@@ -121,7 +128,8 @@ class MenuTile extends StatelessWidget {
   final void Function() onTap;
   final bool isDanger;
 
-  const MenuTile({super.key,
+  const MenuTile({
+    super.key,
     required this.title,
     required this.icon,
     required this.onTap,
@@ -160,7 +168,8 @@ class MenuTile extends StatelessWidget {
                 title,
                 style: TextStyle(
                   fontWeight: FontWeight.w500,
-                  color: (isDanger == false) ? AppColor.secondary : AppColor.error,
+                  color:
+                      (isDanger == false) ? AppColor.secondary : AppColor.error,
                 ),
               ),
             ),
@@ -168,7 +177,9 @@ class MenuTile extends StatelessWidget {
               margin: const EdgeInsets.only(left: 24),
               child: SvgPicture.asset(
                 'assets/icons/arrow-right.svg',
-                colorFilter: ColorFilter.mode((isDanger == false) ? AppColor.secondary : AppColor.error, BlendMode.srcIn),
+                colorFilter: ColorFilter.mode(
+                    (isDanger == false) ? AppColor.secondary : AppColor.error,
+                    BlendMode.srcIn),
               ),
             ),
           ],
