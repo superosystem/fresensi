@@ -4,6 +4,7 @@ import 'package:fresensi/app/controllers/page_index_controller.dart';
 import 'package:fresensi/app/data/app_color.dart';
 import 'package:fresensi/app/data/constants.dart';
 import 'package:fresensi/app/routes/app_pages.dart';
+import 'package:fresensi/app/widgets/bottom_navbar_custom.dart';
 import 'package:fresensi/app/widgets/convex_appbar_custom.dart';
 import 'package:fresensi/app/widgets/presence_card_custom.dart';
 import 'package:fresensi/app/widgets/presence_tile_custom.dart';
@@ -83,10 +84,10 @@ class HomeView extends GetView<HomeController> {
                   margin: const EdgeInsets.only(top: 12, bottom: 24, left: 4),
                   child: Row(
                     children: [
-                      const Icon(Icons.location_on),
+                      const Icon(Icons.map),
                       const SizedBox(width: 2),
                       Text(
-                        (user["position"] != null) ? user["position"] : "Stasiun Luar Angkasa",
+                        (user["address"] != null) ? "${user["address"]}" : "Your address is unreachable",
                         style: TextStyle(
                           fontSize: 12,
                           color: AppColor.secondarySoft,
@@ -197,7 +198,8 @@ class HomeView extends GetView<HomeController> {
         }
       ),
       extendBody: true,
-      bottomNavigationBar: ConvexAppBarCustom(pageIndexC.pageIndex.value),
+      bottomNavigationBar: const BottomNavBarCustom(),
+      // bottomNavigationBar: ConvexAppBarCustom(pageIndexC.pageIndex.value),
     );
   }
 }

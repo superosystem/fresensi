@@ -6,6 +6,7 @@ import 'package:fresensi/app/controllers/page_index_controller.dart';
 import 'package:fresensi/app/data/app_color.dart';
 import 'package:fresensi/app/data/constants.dart';
 import 'package:fresensi/app/routes/app_pages.dart';
+import 'package:fresensi/app/widgets/bottom_navbar_custom.dart';
 import 'package:fresensi/app/widgets/convex_appbar_custom.dart';
 import 'package:get/get.dart';
 
@@ -119,7 +120,8 @@ class ProfileView extends GetView<ProfileController> {
         },
       ),
       extendBody: true,
-      bottomNavigationBar: ConvexAppBarCustom(pageIndexC.pageIndex.value),
+      bottomNavigationBar: const BottomNavBarCustom(),
+      // bottomNavigationBar: ConvexAppBarCustom(pageIndexC.pageIndex.value),
     );
   }
 }

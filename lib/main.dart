@@ -14,9 +14,9 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-
-  final pageIndexC = Get.put(PageIndexController(), permanent: true);
-  final presenceC = Get.put(PresenceController(), permanent: true);
+  // inject controllers
+  Get.put(PageIndexController(), permanent: true);
+  Get.put(PresenceController(), permanent: true);
 
   runApp(
     StreamBuilder<User?>(
@@ -36,7 +36,7 @@ void main() async {
         }
 
         return GetMaterialApp(
-          title: "Fresensi",
+          title: "FRESENSI",
           initialRoute: snapshot.data != null ? Routes.HOME : Routes.LOGIN,
           getPages: AppPages.routes,
           theme: ThemeData(

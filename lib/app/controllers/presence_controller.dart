@@ -6,6 +6,7 @@ import 'package:fresensi/app/widgets/toast_custom.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
+import 'package:geocoding/geocoding.dart';
 
 class PresenceController extends GetxController {
   RxBool isLoading = false.obs;
@@ -21,10 +22,13 @@ class PresenceController extends GetxController {
       // get position
       Position position = determinePosition["position"];
       if (kDebugMode) {
-        print(determinePosition["position"]);
+        print("LAT: ${position.latitude}, LONG: ${position.longitude}");
       }
 
-      String address = "address";
+      // get address from lat and long
+      List<Placemark> placeMarks = await placemarkFromCoordinates(position.latitude, position.longitude);
+      String address = "${placeMarks.first.street}, ${placeMarks.first.subLocality}, ${placeMarks.first.locality} ${placeMarks.first.country}";
+
       // update location (on fire store)
       await updatePosition(position, address);
       isLoading.value = false;
