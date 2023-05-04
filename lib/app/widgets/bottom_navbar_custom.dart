@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:fresensi/app/controllers/PageIndexController.dart';
+import 'package:fresensi/app/controllers/page_index_controller.dart';
 import 'package:fresensi/app/data/app_color.dart';
 import 'package:get/get.dart';
 

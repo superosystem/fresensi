@@ -1,6 +1,6 @@
 import 'package:convex_bottom_bar/convex_bottom_bar.dart';
 import 'package:flutter/material.dart';
-import 'package:fresensi/app/controllers/PageIndexController.dart';
+import 'package:fresensi/app/controllers/page_index_controller.dart';
 import 'package:fresensi/app/data/app_color.dart';
 import 'package:get/get.dart';
 
