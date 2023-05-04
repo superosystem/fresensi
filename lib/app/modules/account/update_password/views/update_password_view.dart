@@ -110,7 +110,7 @@ class UpdatePasswordView extends GetView<UpdatePasswordController> {
                 ),
                 child: Text(
                   (controller.isLoading.isFalse)
-                      ? "Change Password"
+                      ? 'Change Password'
                       : 'Loading...',
                   style: const TextStyle(
                     fontSize: 16,

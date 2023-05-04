@@ -10,6 +10,7 @@ import '../controllers/presences_controller.dart';
 
 class PresencesView extends GetView<PresencesController> {
   const PresencesView({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -91,7 +92,7 @@ class PresencesView extends GetView<PresencesController> {
             padding: EdgeInsets.all(20),
             separatorBuilder: (context, index) => const SizedBox(height: 16),
             itemBuilder: (context, index) {
-              return PresenceTileCustom();
+              return SizedBox();
             }
         )
     );

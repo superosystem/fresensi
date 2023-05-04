@@ -5,7 +5,6 @@ import 'package:fresensi/app/data/app_color.dart';
 import 'package:fresensi/app/data/constants.dart';
 import 'package:fresensi/app/routes/app_pages.dart';
 import 'package:fresensi/app/widgets/bottom_navbar_custom.dart';
-import 'package:fresensi/app/widgets/convex_appbar_custom.dart';
 import 'package:fresensi/app/widgets/presence_card_custom.dart';
 import 'package:fresensi/app/widgets/presence_tile_custom.dart';
 import 'package:get/get.dart';
@@ -26,7 +25,7 @@ class HomeView extends GetView<HomeController> {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return const Center(child: CircularProgressIndicator());
           }
-          if(snapshot.hasData) {
+          if (snapshot.hasData) {
             Map<String, dynamic> user = snapshot.data!.data()!;
             return ListView(
               shrinkWrap: true,
@@ -45,8 +44,8 @@ class HomeView extends GetView<HomeController> {
                           width: 42,
                           height: 42,
                           child: Image.network(
-                            (user["avatar"] == null || user['avatar'] == "")
-                                ? "$defaultAvatarUrl + ${user['name']}"
+                            (user['avatar'] == null || user['avatar'] == "")
+                                ? '$defaultAvatarUrl + ${user['name']}'
                                 : user['avatar'],
                             fit: BoxFit.cover,
                           ),
@@ -57,7 +56,7 @@ class HomeView extends GetView<HomeController> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            "Welcome Back",
+                            'Welcome Back',
                             style: TextStyle(
                               fontSize: 12,
                               color: AppColor.secondarySoft,
@@ -65,7 +64,7 @@ class HomeView extends GetView<HomeController> {
                           ),
                           const SizedBox(height: 4),
                           Text(
-                            user["name"],
+                            user['name'],
                             style: const TextStyle(
                               fontWeight: FontWeight.w500,
                               fontFamily: 'poppins',
@@ -77,20 +76,38 @@ class HomeView extends GetView<HomeController> {
                   ),
                 ),
                 // SECTION 2 - card
-                PresenceCardCustom(user: user),
+                StreamBuilder<DocumentSnapshot<Map<String, dynamic>>>(
+                  stream: controller.streamTodayPresence(),
+                  builder: (context, snapshot) {
+                    if (snapshot.connectionState == ConnectionState.waiting) {
+                      return const Center(child: CircularProgressIndicator());
+                    }
+                    var todayPresenceData = snapshot.data?.data();
+                    return PresenceCardCustom(
+                      user: user,
+                      todayPresenceData: todayPresenceData,
+                    );
+                  },
+                ),
                 // SECTION 3 - last location
-                // last location
                 Container(
                   margin: const EdgeInsets.only(top: 12, bottom: 24, left: 4),
                   child: Row(
                     children: [
-                      const Icon(Icons.map),
+                      const Icon(Icons.location_on),
                       const SizedBox(width: 2),
-                      Text(
-                        (user["address"] != null) ? "${user["address"]}" : "Your address is unreachable",
-                        style: TextStyle(
-                          fontSize: 12,
-                          color: AppColor.secondarySoft,
+                      Expanded(
+                        child: Text(
+                          (user['address'] != null)
+                              ? '${user['address']}'
+                              : 'Your address is unreachable',
+                          softWrap: false,
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                          style: TextStyle(
+                            fontSize: 12,
+                            color: AppColor.secondarySoft,
+                          ),
                         ),
                       ),
                     ],
@@ -120,8 +137,8 @@ class HomeView extends GetView<HomeController> {
                                 ),
                               ),
                               Text(
-                                "120 KM",
-                                style: TextStyle(
+                                controller.officeDistance.value,
+                                style: const TextStyle(
                                   fontSize: 24,
                                   fontFamily: 'poppins',
                                   fontWeight: FontWeight.w700,
@@ -158,44 +175,59 @@ class HomeView extends GetView<HomeController> {
                   ),
                 ),
                 // SECTION 5 - presence history
-                Container(
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      const Text(
-                        "Presence History",
-                        style: TextStyle(
-                          fontFamily: "poppins",
-                          fontWeight: FontWeight.w600,
-                        ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    const Text(
+                      'Presence History',
+                      style: TextStyle(
+                        fontFamily: 'poppins',
+                        fontWeight: FontWeight.w600,
                       ),
-                      TextButton(
-                        onPressed: () => Get.toNamed(Routes.PRESENCES),
-                        style: TextButton.styleFrom(
-                          foregroundColor: AppColor.primary,
-                        ),
-                        child: const Text("Show All"),
+                    ),
+                    TextButton(
+                      onPressed: () => Get.toNamed(Routes.PRESENCES),
+                      style: TextButton.styleFrom(
+                        foregroundColor: AppColor.primary,
                       ),
-                    ],
-                  ),
+                      child: const Text('Show All'),
+                    ),
+                  ],
                 ),
-                ListView.separated(
-                  itemCount: 10,
-                  shrinkWrap: true,
-                  physics: BouncingScrollPhysics(),
-                  padding: EdgeInsets.zero,
-                  separatorBuilder: (context, index) => SizedBox(height: 16),
-                  itemBuilder: (context, index) {
-                    return PresenceTileCustom();
-                  },
-                ),
-                SizedBox(height: 30),
+                StreamBuilder<QuerySnapshot<Map<String, dynamic>>>(
+                    stream: controller.streamLastPresence(),
+                    builder: (context, snapshot) {
+                      if (snapshot.connectionState == ConnectionState.waiting) {
+                        return const Center(child: CircularProgressIndicator());
+                      }
+                      if (snapshot.connectionState == ConnectionState.done) {
+                        List<QueryDocumentSnapshot<Map<String, dynamic>>>
+                            listPresence = snapshot.data!.docs;
+                        return ListView.separated(
+                          itemCount: listPresence.length,
+                          shrinkWrap: true,
+                          physics: const BouncingScrollPhysics(),
+                          padding: EdgeInsets.zero,
+                          separatorBuilder: (context, index) =>
+                              const SizedBox(height: 16),
+                          itemBuilder: (context, index) {
+                            Map<String, dynamic> presenceData =
+                                listPresence[index].data();
+                            return PresenceTileCustom(
+                              presenceData: presenceData,
+                            );
+                          },
+                        );
+                      } else {
+                        return const SizedBox();
+                      }
+                    }),
               ],
             );
-          }else{
-            return const Center(child: Text("Problem Occurred"));
+          } else {
+            return const Center(child: Text('Problem Occurred'));
           }
-        }
+        },
       ),
       extendBody: true,
       bottomNavigationBar: const BottomNavBarCustom(),

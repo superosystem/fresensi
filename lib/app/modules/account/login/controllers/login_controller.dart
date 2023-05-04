@@ -39,8 +39,8 @@ class LoginController extends GetxController {
             }
           } else {
             DialogAlertCustom.showPresenceAlert(
-              title: "Account need verification",
-              message: "Are you want to send email verification?",
+              title: 'Account need verification',
+              message: 'Are you want to send email verification?',
               onConfirm: () async {
                 try {
                   // send email verification
@@ -48,14 +48,14 @@ class LoginController extends GetxController {
                   Get.back();
 
                   ToastCustom.successToast(
-                      "Success", "We have send verification to your email");
+                      'Success', 'We have send verification to your email');
                   isLoading.value = false;
                 } catch (e) {
                   if (kDebugMode) {
                     print(e.toString());
                   }
                   ToastCustom.errorToast(
-                      "Problem occurred", "Can not send email verification");
+                      'Problem occurred', 'Can not send email verification');
                 }
               },
               onCancel: () => Get.back(),
@@ -67,19 +67,19 @@ class LoginController extends GetxController {
         isLoading.value = false;
         if (err.code == 'user-not-found') {
           if (kDebugMode) {
-            print("No user found for that email.");
+            print('No user found for that email.');
           }
-          ToastCustom.errorToast("Problem occurred", "Email is not registered");
+          ToastCustom.errorToast('Problem occurred', 'Email is not registered');
         } else if (err.code == 'wrong-password') {
           if (kDebugMode) {
-            print("Wrong password provided for that user.");
+            print('Wrong password provided for that user.');
           }
           ToastCustom.errorToast(
-              "Problem occurred", "Wrong password for that user");
+              'Problem occurred', 'Wrong password for that user');
         }
       }
     } else {
-      ToastCustom.errorToast("Problem occurred", "All fields can not be empty");
+      ToastCustom.errorToast('Problem occurred', 'All fields can not be empty');
     }
   }
 }

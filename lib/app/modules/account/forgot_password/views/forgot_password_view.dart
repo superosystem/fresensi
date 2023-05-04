@@ -46,7 +46,7 @@ class ForgotPasswordView extends GetView<ForgotPasswordController> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  "Open Source\nFresensi App",
+                  'Open Source\nFresensi App',
                   style: TextStyle(
                       fontSize: 28,
                       color: AppColor.white,
@@ -81,7 +81,7 @@ class ForgotPasswordView extends GetView<ForgotPasswordController> {
                       ),
                       const SizedBox(height: 8),
                       Text(
-                        "We will send password reset link to your email.",
+                        'We will send password reset link to your email.',
                         style: TextStyle(
                           color: AppColor.secondarySoft,
                           height: 150 / 100,
@@ -106,7 +106,7 @@ class ForgotPasswordView extends GetView<ForgotPasswordController> {
                     controller: controller.emailC,
                     decoration: InputDecoration(
                       label: Text(
-                        "Email",
+                        'Email',
                         style: TextStyle(
                           color: AppColor.secondarySoft,
                           fontSize: 14,
@@ -114,7 +114,7 @@ class ForgotPasswordView extends GetView<ForgotPasswordController> {
                       ),
                       floatingLabelBehavior: FloatingLabelBehavior.always,
                       border: InputBorder.none,
-                      hintText: "agus.kumaha@email.com",
+                      hintText: 'agus.kumaha@email.com',
                       hintStyle: TextStyle(
                         fontSize: 14,
                         fontFamily: 'poppins',

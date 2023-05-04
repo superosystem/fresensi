@@ -17,15 +17,15 @@ class ForgotPasswordController extends GetxController {
       try{
         await auth.sendPasswordResetEmail(email: emailC.text);
         Get.back();
-        ToastCustom.successToast("Success", "Reset password link has been send to your email");
+        ToastCustom.successToast('Success', 'Reset password link has been send to your email');
       }catch(e) {
         if (kDebugMode) {
-          print("ERROR: ${e.toString()}");
+          print('ERROR: ${e.toString()}');
         }
-        ToastCustom.errorToast("Error", "Can not send reset password link to your email");
+        ToastCustom.errorToast('Error', 'Can not send reset password link to your email');
       }
     }else{
-      ToastCustom.errorToast("Problem occurred", "Email can not be empty");
+      ToastCustom.errorToast('Problem occurred', 'Email can not be empty');
     }
   }
 }

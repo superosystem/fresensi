@@ -18,22 +18,22 @@ class Employee {
   });
 
   factory Employee.fromJson(Map<String, dynamic> json) => Employee(
-    id: json["id"],
-    uid: json["uid"],
-    name: json["name"],
-    email: json["email"],
-    role: json["role"],
-    createdAt: json["created_at"],
-    updatedAt: json["updated_at"],
+    id: json['id'],
+    uid: json['uid'],
+    name: json['name'],
+    email: json['email'],
+    role: json['role'],
+    createdAt: json['created_at'],
+    updatedAt: json['updated_at'],
   );
 
   Map<String, dynamic> toJson() => {
-    "id": id,
-    "uid": uid,
-    "name": name,
-    "email": email,
-    "role": role,
-    "created_at": createdAt,
-    "updated_at": updatedAt,
+    'id': id,
+    'uid': uid,
+    'name': name,
+    'email': email,
+    'role': role,
+    'created_at': createdAt,
+    'updated_at': updatedAt,
   };
 }

@@ -87,8 +87,8 @@ class UpdateProfileView extends GetView<UpdateProfileController> {
                           height: 98,
                           color: AppColor.primaryExtraSoft,
                           child: Image.network(
-                            (user["avatar"] == null || user['avatar'] == "")
-                                ? "$defaultAvatarUrl + ${user['name']}"
+                            (user['avatar'] == null || user['avatar'] == "")
+                                ? '$defaultAvatarUrl + ${user['name']}'
                                 : user['avatar'],
                             fit: BoxFit.cover,
                           ),
@@ -123,25 +123,25 @@ class UpdateProfileView extends GetView<UpdateProfileController> {
           // SECTION 2 - Profile User
           InputCustom(
             controller: controller.idC,
-            label: "ID",
-            hint: "EMP1010101",
+            label: 'ID',
+            hint: 'EMP1010101',
             disabled: true,
             margin: const EdgeInsets.only(bottom: 16, top: 42),
           ),
           InputCustom(
             controller: controller.nameC,
-            label: "Full Name",
-            hint: "Your Full Name",
+            label: 'Full Name',
+            hint: 'Your Full Name',
           ),
           InputCustom(
             controller: controller.jobC,
-            label: "Job",
-            hint: "Developer",
+            label: 'Job',
+            hint: 'Developer',
           ),
           InputCustom(
             controller: controller.emailC,
-            label: "Email",
-            hint: "agus.kumaha@email.com",
+            label: 'Email',
+            hint: 'agus.kumaha@email.com',
             disabled: true,
           ),
         ],

@@ -12,7 +12,7 @@ class ToastCustom {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           SvgPicture.asset(
-            "assets/icons/info-circle.svg",
+            'assets/icons/info-circle.svg',
             colorFilter: const ColorFilter.mode(Colors.white, BlendMode.srcIn),
           ),
           const SizedBox(width: 16),
@@ -23,7 +23,7 @@ class ToastCustom {
                 Container(
                   margin: const EdgeInsets.only(bottom: 4),
                   child: Text(
-                    title ?? "Error",
+                    title ?? 'Error',
                     style: const TextStyle(
                       color: Colors.white,
                       fontWeight: FontWeight.w500,
@@ -32,7 +32,7 @@ class ToastCustom {
                   ),
                 ),
                 Text(
-                  message ?? "Add your error message here",
+                  message ?? 'Add your error message here',
                   style: const TextStyle(color: Colors.white),
                 ),
               ],
@@ -56,7 +56,7 @@ class ToastCustom {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           SvgPicture.asset(
-            "assets/icons/success-circle.svg",
+            'assets/icons/success-circle.svg',
             colorFilter: const ColorFilter.mode(Colors.white, BlendMode.srcIn),
           ),
           const SizedBox(width: 16),
@@ -67,7 +67,7 @@ class ToastCustom {
                 Container(
                   margin: const EdgeInsets.only(bottom: 4),
                   child: Text(
-                    title ?? "Success",
+                    title ?? 'Success',
                     style: const TextStyle(
                       color: Colors.white,
                       fontWeight: FontWeight.w500,
@@ -76,7 +76,7 @@ class ToastCustom {
                   ),
                 ),
                 Text(
-                  message ?? "Add your success message here",
+                  message ?? 'Add your success message here',
                   style: const TextStyle(color: Colors.white),
                 ),
               ],

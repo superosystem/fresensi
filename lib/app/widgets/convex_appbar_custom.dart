@@ -17,9 +17,9 @@ class ConvexAppBarCustom extends GetView<PageIndexController> {
       backgroundColor: AppColor.primary,
       style: TabStyle.fixedCircle,
       items: const [
-        TabItem(icon: Icons.home, title: "Home"),
-        TabItem(icon: Icons.fingerprint, title: "Attend"),
-        TabItem(icon: Icons.person, title: "Profile"),
+        TabItem(icon: Icons.home, title: 'Home'),
+        TabItem(icon: Icons.fingerprint, title: 'Attend'),
+        TabItem(icon: Icons.person, title: 'Profile'),
       ],
       initialActiveIndex: index,
       onTap: (int index) => pageIndexC.changePage(index),

@@ -46,37 +46,37 @@ class UpdateProfileController extends GetxController {
       try {
         // update data
         Map<String, dynamic> data = {
-          "name": nameC.text,
-          "job": jobC.text,
+          'name': nameC.text,
+          'job': jobC.text,
         };
         if (image != null) {
           // upload avatar image to storage
           File file = File(image!.path);
-          String ext = image!.name.split(".").last;
-          String upDir = "$uid/avatar.$ext";
+          String ext = image!.name.split('.').last;
+          String upDir = '$uid/avatar.$ext';
           // on upload avatar
           await storage.ref(upDir).putFile(file);
           String avatarUrl = await storage.ref(upDir).getDownloadURL();
 
-          data.addAll({"avatar": avatarUrl});
+          data.addAll({'avatar': avatarUrl});
         }
 
         // on update data
-        await firestore.collection("employee").doc(uid).update(data);
+        await firestore.collection('employee').doc(uid).update(data);
 
         image = null;
         Get.back();
-        ToastCustom.successToast("Success", "Profile has been changed");
+        ToastCustom.successToast('Success', 'Profile has been changed');
       } catch (e) {
-        ToastCustom.errorToast("Problem Occurred", "Can not update profile");
+        ToastCustom.errorToast('Problem Occurred', 'Can not update profile');
         if (kDebugMode) {
-          print("ERROR: ${e.toString()}");
+          print('ERROR: ${e.toString()}');
         }
       } finally {
         isLoading.value = false;
       }
     }else{
-      ToastCustom.errorToast("Problem Occurred", "You must fill all form");
+      ToastCustom.errorToast('Problem Occurred', 'You must fill all form');
     }
   }
 
@@ -87,7 +87,7 @@ class UpdateProfileController extends GetxController {
         print(image!.path);
       }
       if (kDebugMode) {
-        print(image!.name.split(".").last);
+        print(image!.name.split('.').last);
       }
     }
     update();
@@ -96,15 +96,15 @@ class UpdateProfileController extends GetxController {
   void deleteAvatar() async {
     String uid = auth.currentUser!.uid;
     try {
-      await firestore.collection("employee").doc(uid).update({
-        "avatar": FieldValue.delete(),
+      await firestore.collection('employee').doc(uid).update({
+        'avatar': FieldValue.delete(),
       });
       Get.back();
 
-      Get.snackbar("Success", "Account has been deleted");
+      Get.snackbar('Success', 'Account has been deleted');
     } catch (e) {
       Get.snackbar(
-          "Problem Occurred", "Can not delete avatar. Karena ${e.toString()}");
+          'Problem Occurred', 'Can not delete avatar. Karena ${e.toString()}');
     } finally {
       update();
     }

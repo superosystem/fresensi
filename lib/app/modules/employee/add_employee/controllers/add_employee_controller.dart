@@ -26,8 +26,8 @@ class AddEmployeeController extends GetxController {
         emailC.text.isNotEmpty && jobC.text.isNotEmpty) {
       isLoading.value = true;
       DialogAlertCustom.confirmAdmin(
-          title: "Admin Confirmation",
-          message: "you need to confirm that you are an administrator by inputting your password",
+          title: 'Admin Confirmation',
+          message: 'you need to confirm that you are an administrator by inputting your password',
           onConfirm: () async {
             if (isLoadingCreateEmployee.isFalse) {
               await onAddEmployee();
@@ -42,7 +42,7 @@ class AddEmployeeController extends GetxController {
       );
     } else {
       isLoading.value = false;
-      ToastCustom.errorToast("Problem occurred", "All fields can not be empty");
+      ToastCustom.errorToast('Problem occurred', 'All fields can not be empty');
     }
   }
 
@@ -65,16 +65,16 @@ class AddEmployeeController extends GetxController {
         if (userCredential.user != null) {
           String uid = userCredential.user!.uid;
           // store to fire store (employee)
-          DocumentReference employee = firestore.collection("employee").doc(uid);
+          DocumentReference employee = firestore.collection('employee').doc(uid);
           await employee.set({
-            "id": idC.text,
-            "name": nameC.text,
-            "email": emailC.text,
-            "uid": uid,
-            "role": defaultRoleUser,
-            "job": jobC.text,
-            "avatar": "",
-            "created_at": DateTime.now().toIso8601String(),
+            'id': idC.text,
+            'name': nameC.text,
+            'email': emailC.text,
+            'uid': uid,
+            'role': defaultRoleUser,
+            'job': jobC.text,
+            'avatar': "",
+            'created_at': DateTime.now().toIso8601String(),
           });
 
           // send email verification
@@ -89,36 +89,36 @@ class AddEmployeeController extends GetxController {
           // clearing form
           Get.back(); // close dialog
           Get.back(); // back to home
-          ToastCustom.successToast("Success", "New Employee has been added");
+          ToastCustom.successToast('Success', 'New Employee has been added');
           isLoadingCreateEmployee.value = false;
         }
       } on FirebaseAuthException catch (err) {
         isLoadingCreateEmployee.value = false;
         if (err.code == 'weak-password') {
           if (kDebugMode) {
-            print("The password provided is too weak");
+            print('The password provided is too weak');
           }
-          ToastCustom.errorToast("Problem occurred", "The password provided is too weak");
+          ToastCustom.errorToast('Problem occurred', 'The password provided is too weak');
         } else if (err.code == 'email-already-in-use') {
           if (kDebugMode) {
             print('The account already exists for that email');
           }
-          ToastCustom.errorToast("Problem occurred", "The account already exists for that email");
+          ToastCustom.errorToast('Problem occurred', 'The account already exists for that email');
         } else if (err.code == 'wrong-password') {
           if (kDebugMode) {
             print('Wrong password for that email');
           }
-          ToastCustom.errorToast("Problem occurred", "Wrong admin password");
+          ToastCustom.errorToast('Problem occurred', 'Wrong admin password');
         } else {
           isLoadingCreateEmployee.value = false;
           if (kDebugMode) {
             print('ERROR: $err');
           }
-          ToastCustom.errorToast("Problem occurred", "Error");
+          ToastCustom.errorToast('Problem occurred', 'Error');
         }
       }
     } else {
-      ToastCustom.errorToast("Problem occurred", "Password admin can not be empty");
+      ToastCustom.errorToast('Problem occurred', 'Password admin can not be empty');
     }
   }
 }

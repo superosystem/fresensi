@@ -36,7 +36,7 @@ void main() async {
         }
 
         return GetMaterialApp(
-          title: "FRESENSI",
+          title: 'FRESENSI',
           initialRoute: snapshot.data != null ? Routes.HOME : Routes.LOGIN,
           getPages: AppPages.routes,
           theme: ThemeData(

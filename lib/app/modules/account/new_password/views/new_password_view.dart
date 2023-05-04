@@ -45,7 +45,7 @@ class NewPasswordView extends GetView<NewPasswordController> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  "Open Source\nFresensi App",
+                  'Open Source\nFresensi App',
                   style: TextStyle(
                       fontSize: 28,
                       color: AppColor.white,
@@ -80,7 +80,7 @@ class NewPasswordView extends GetView<NewPasswordController> {
                       ),
                       const SizedBox(height: 8),
                       Text(
-                        "You log in with the default password. To continue, you must create a new password.",
+                        'You log in with the default password. To continue, you must create a new password.',
                         style: TextStyle(
                           color: AppColor.secondarySoft,
                           height: 150 / 100,

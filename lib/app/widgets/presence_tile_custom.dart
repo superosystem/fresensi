@@ -5,15 +5,14 @@ import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 
 class PresenceTileCustom extends StatelessWidget {
+  final Map<String, dynamic> presenceData;
 
-  const PresenceTileCustom({super.key});
+  const PresenceTileCustom({super.key, required this.presenceData});
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {
-        Get.toNamed(Routes.DETAIL_PRESENCE);
-      },
+      onTap: () => Get.toNamed(Routes.DETAIL_PRESENCE, arguments: presenceData),
       borderRadius: BorderRadius.circular(8),
       child: Container(
         width: MediaQuery.of(context).size.width,
@@ -34,32 +33,32 @@ class PresenceTileCustom extends StatelessWidget {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
-                      "Check In",
+                    const Text(
+                      'Check In',
                       style: TextStyle(fontSize: 12),
                     ),
-                    SizedBox(height: 6),
+                    const SizedBox(height: 6),
                     Text(
-                      "12:00",
-                      style: TextStyle(
+                      (presenceData["in"] == null) ? "-" : DateFormat.jm().format(DateTime.parse(presenceData["in"]["date"])),
+                      style: const TextStyle(
                         fontSize: 14,
                         fontWeight: FontWeight.w600,
                       ),
                     ),
                   ],
                 ),
-                SizedBox(width: 24),
+                const SizedBox(width: 24),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
-                      "Check Out",
+                    const Text(
+                      'Check Out',
                       style: TextStyle(fontSize: 12),
                     ),
-                    SizedBox(height: 6),
+                    const SizedBox(height: 6),
                     Text(
-                      "12:00",
-                      style: TextStyle(
+                      (presenceData["out"] == null) ? "-" : DateFormat.jm().format(DateTime.parse(presenceData["out"]["date"])),
+                      style: const TextStyle(
                         fontSize: 14,
                         fontWeight: FontWeight.w600,
                       ),
@@ -69,7 +68,7 @@ class PresenceTileCustom extends StatelessWidget {
               ],
             ),
             Text(
-              "Wed, May 4 2023",
+              DateFormat.yMMMMEEEEd().format(DateTime.parse(presenceData["date"])),
               style: TextStyle(
                 fontSize: 10,
                 fontWeight: FontWeight.w600,

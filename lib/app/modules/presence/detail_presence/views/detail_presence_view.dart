@@ -69,14 +69,14 @@ class DetailPresenceView extends GetView<DetailPresenceController> {
                         ),
                         const SizedBox(height: 4),
                         Text(
-                          "08:00 AM",
+                          '08:00 AM',
                           style: TextStyle(color: AppColor.white, fontSize: 16, fontWeight: FontWeight.w600),
                         ),
                       ],
                     ),
                     // PRESENCE DATE
                     Text(
-                      "Wed, Mei 4 2025",
+                      'Wed, Mei 4 2025',
                       style: TextStyle(color: AppColor.white),
                     ),
                   ],
@@ -88,7 +88,7 @@ class DetailPresenceView extends GetView<DetailPresenceController> {
                 ),
                 const SizedBox(height: 4),
                 Text(
-                  "Outside area presence",
+                  'Outside area presence',
                   style: TextStyle(color: AppColor.white, fontSize: 16, fontWeight: FontWeight.w600),
                 ),
                 const SizedBox(height: 14),
@@ -98,7 +98,7 @@ class DetailPresenceView extends GetView<DetailPresenceController> {
                 ),
                 const SizedBox(height: 4),
                 Text(
-                 "Stasiun Luar Angkasa",
+                 'Stasiun Luar Angkasa',
                   style: TextStyle(
                     color: AppColor.white,
                     fontSize: 16,
@@ -137,14 +137,14 @@ class DetailPresenceView extends GetView<DetailPresenceController> {
                         ),
                         const SizedBox(height: 4),
                         Text(
-                          "05:00 PM",
+                          '05:00 PM',
                           style: TextStyle(color: AppColor.secondary, fontSize: 16, fontWeight: FontWeight.w600),
                         ),
                       ],
                     ),
                     //presence date
                     Text(
-                      "Wed, Mei 4 2023",
+                      'Wed, Mei 4 2023',
                       style: TextStyle(color: AppColor.secondary),
                     ),
                   ],
@@ -156,7 +156,7 @@ class DetailPresenceView extends GetView<DetailPresenceController> {
                 ),
                 const SizedBox(height: 4),
                 Text(
-                  "Outside area presence",
+                  'Outside area presence',
                   style: TextStyle(color: AppColor.secondary, fontSize: 16, fontWeight: FontWeight.w600),
                 ),
                 const SizedBox(height: 14),
@@ -166,7 +166,7 @@ class DetailPresenceView extends GetView<DetailPresenceController> {
                 ),
                 const SizedBox(height: 4),
                 Text(
-                  "Stasiun Luar Angkasa",
+                  'Stasiun Luar Angkasa',
                   style: TextStyle(
                     color: AppColor.secondary,
                     fontSize: 16,

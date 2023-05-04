@@ -30,7 +30,7 @@ class LoginView extends GetView<LoginController> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  "Open Source\nFresensi App",
+                  'Open Source\nFresensi App',
                   style: TextStyle(
                       fontSize: 28,
                       color: AppColor.white,
@@ -77,7 +77,7 @@ class LoginView extends GetView<LoginController> {
                     controller: controller.emailC,
                     decoration: InputDecoration(
                       label: Text(
-                        "Email",
+                        'Email',
                         style: TextStyle(
                           color: AppColor.secondarySoft,
                           fontSize: 14,
@@ -85,7 +85,7 @@ class LoginView extends GetView<LoginController> {
                       ),
                       floatingLabelBehavior: FloatingLabelBehavior.always,
                       border: InputBorder.none,
-                      hintText: "agus.kumaha@email.com",
+                      hintText: 'agus.kumaha@email.com',
                       hintStyle: TextStyle(
                         fontSize: 14,
                         fontFamily: 'poppins',
@@ -115,7 +115,7 @@ class LoginView extends GetView<LoginController> {
                         obscureText: controller.obsecureText.value,
                         decoration: InputDecoration(
                           label: Text(
-                            "Password",
+                            'Password',
                             style: TextStyle(
                               color: AppColor.secondarySoft,
                               fontSize: 14,
@@ -123,7 +123,7 @@ class LoginView extends GetView<LoginController> {
                           ),
                           floatingLabelBehavior: FloatingLabelBehavior.always,
                           border: InputBorder.none,
-                          hintText: "*************",
+                          hintText: '*************',
                           suffixIcon: IconButton(
                             icon: (controller.obsecureText != false)
                                 ? SvgPicture.asset('assets/icons/show.svg')
@@ -183,7 +183,7 @@ class LoginView extends GetView<LoginController> {
                     style: TextButton.styleFrom(
                       foregroundColor: AppColor.secondarySoft
                     ),
-                    child: const Text("Forgot your password?"),
+                    child: const Text('Forgot your password?'),
                   ),
                 )
               ],

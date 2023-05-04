@@ -44,8 +44,8 @@ class ProfileView extends GetView<ProfileController> {
                         height: 100,
                         color: AppColor.secondarySoft,
                         child: Image.network(
-                          (user["avatar"] == null || user['avatar'] == "")
-                              ? "$defaultAvatarUrl + ${user['name']}"
+                          (user['avatar'] == null || user['avatar'] == "")
+                              ? '$defaultAvatarUrl + ${user['name']}'
                               : user['avatar'],
                           fit: BoxFit.cover,
                         ),
@@ -60,7 +60,7 @@ class ProfileView extends GetView<ProfileController> {
                       ),
                     ),
                     Text(
-                      user["email"],
+                      user['email'],
                       style: TextStyle(color: AppColor.secondarySoft),
                     ),
                   ],
@@ -115,7 +115,7 @@ class ProfileView extends GetView<ProfileController> {
               ],
             );
           } else {
-            return const Center(child: Text("Can not found."));
+            return const Center(child: Text('Can not found.'));
           }
         },
       ),

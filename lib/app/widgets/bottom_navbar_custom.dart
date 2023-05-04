@@ -47,7 +47,7 @@ class BottomNavBarCustom extends GetView<PageIndexController> {
                                     : SvgPicture.asset('assets/icons/home.svg'),
                               ),
                               Text(
-                                "Home",
+                                'Home',
                                 style: TextStyle(
                                   fontSize: 10,
                                   color: AppColor.secondary,
@@ -63,7 +63,7 @@ class BottomNavBarCustom extends GetView<PageIndexController> {
                       margin: const EdgeInsets.only(top: 24),
                       alignment: Alignment.center,
                       child: Text(
-                        "Presence",
+                        'Presence',
                         style: TextStyle(
                           fontSize: 10,
                           color: AppColor.secondary,
@@ -87,7 +87,7 @@ class BottomNavBarCustom extends GetView<PageIndexController> {
                                         'assets/icons/profile.svg'),
                               ),
                               Text(
-                                "Profile",
+                                'Profile',
                                 style: TextStyle(
                                   fontSize: 10,
                                   color: AppColor.secondary,

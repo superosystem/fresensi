@@ -25,14 +25,14 @@ class NewPasswordController extends GetxController {
           isLoading.value = false;
         } else {
           ToastCustom.errorToast(
-              "Problem occurred", "You must change your password");
+              'Problem occurred', 'You must change your password');
           isLoading.value = false;
         }
       } else {
-        ToastCustom.errorToast("Problem occurred", "Password does not match");
+        ToastCustom.errorToast('Problem occurred', 'Password does not match');
       }
     } else {
-      ToastCustom.errorToast("Problem occurred", "New Password field can not be empty");
+      ToastCustom.errorToast('Problem occurred', 'New Password field can not be empty');
     }
   }
 
@@ -52,19 +52,19 @@ class NewPasswordController extends GetxController {
       );
 
       Get.offAllNamed(Routes.HOME);
-      ToastCustom.successToast("Success", "Password has been changed");
+      ToastCustom.successToast('Success', 'Password has been changed');
     } on FirebaseAuthException catch (err) {
       if (err.code == 'weak-password') {
         if (kDebugMode) {
-          print("The password provided is too weak");
+          print('The password provided is too weak');
         }
-        ToastCustom.errorToast("Problem occurred", "The password too weak, you need at least six characters");
+        ToastCustom.errorToast('Problem occurred', 'The password too weak, you need at least six characters');
       }
     } catch (err) {
       if (kDebugMode) {
-        print("SOME ERROR: $err");
+        print('SOME ERROR: $err');
       }
-      ToastCustom.errorToast("Problem occurred", "Error ");
+      ToastCustom.errorToast('Problem occurred', 'Error ');
     }
   }
 }

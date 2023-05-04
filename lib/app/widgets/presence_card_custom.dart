@@ -1,10 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:fresensi/app/data/app_color.dart';
+import 'package:intl/intl.dart';
 
 class PresenceCardCustom extends StatelessWidget {
   final Map<String, dynamic> user;
+  final Map<String, dynamic>? todayPresenceData;
 
-  PresenceCardCustom({super.key, required this.user});
+  PresenceCardCustom({super.key, required this.user, this.todayPresenceData});
 
   @override
   Widget build(BuildContext context) {
@@ -62,7 +64,7 @@ class PresenceCardCustom extends StatelessWidget {
                       Container(
                         margin: const EdgeInsets.only(bottom: 6),
                         child: Text(
-                          "Check In",
+                          'Check In',
                           style: TextStyle(
                             fontSize: 12,
                             color: AppColor.white,
@@ -70,7 +72,7 @@ class PresenceCardCustom extends StatelessWidget {
                         ),
                       ),
                       Text(
-                        "08:00 AM",
+                        (todayPresenceData?["in"] == null) ? "-" : DateFormat.jms().format(DateTime.parse(todayPresenceData!["in"]["date"])),
                         style: TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.w700,
@@ -92,7 +94,7 @@ class PresenceCardCustom extends StatelessWidget {
                       Container(
                         margin: const EdgeInsets.only(bottom: 6),
                         child: Text(
-                          "Check Out",
+                          'Check Out',
                           style: TextStyle(
                             fontSize: 12,
                             color: AppColor.white,
@@ -100,7 +102,7 @@ class PresenceCardCustom extends StatelessWidget {
                         ),
                       ),
                       Text(
-                        "05:00 PM",
+                        (todayPresenceData?["out"] == null) ? "-" : DateFormat.jms().format(DateTime.parse(todayPresenceData!["out"]["date"])),
                         style: TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.w700,
