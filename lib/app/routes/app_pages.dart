@@ -1,3 +1,5 @@
+import 'package:fresensi/app/modules/presence/presences/bindings/presences_binding.dart';
+import 'package:fresensi/app/modules/presence/presences/views/presences_view.dart';
 import 'package:get/get.dart';
 
 import '../modules/account/forgot_password/bindings/forgot_password_binding.dart';
@@ -16,7 +18,8 @@ import '../modules/employee/add_employee/bindings/add_employee_binding.dart';
 import '../modules/employee/add_employee/views/add_employee_view.dart';
 import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/views/home_view.dart';
-
+import '../modules/presence/detail_presence/bindings/detail_presence_binding.dart';
+import '../modules/presence/detail_presence/views/detail_presence_view.dart';
 
 part 'app_routes.dart';
 
@@ -73,6 +76,16 @@ class AppPages {
       page: () => const AddEmployeeView(),
       binding: AddEmployeeBinding(),
       transition: Transition.fadeIn,
+    ),
+    GetPage(
+      name: _Paths.PRESENCES,
+      page: () => const PresencesView(),
+      binding: PresencesBinding(),
+    ),
+    GetPage(
+      name: _Paths.DETAIL_PRESENCE,
+      page: () => const DetailPresenceView(),
+      binding: DetailPresenceBinding(),
     ),
   ];
 }

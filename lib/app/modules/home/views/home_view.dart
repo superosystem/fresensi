@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:fresensi/app/controllers/page_index_controller.dart';
 import 'package:fresensi/app/data/app_color.dart';
 import 'package:fresensi/app/data/constants.dart';
+import 'package:fresensi/app/routes/app_pages.dart';
 import 'package:fresensi/app/widgets/convex_appbar_custom.dart';
 import 'package:fresensi/app/widgets/presence_card_custom.dart';
 import 'package:fresensi/app/widgets/presence_tile_custom.dart';
@@ -160,7 +161,7 @@ class HomeView extends GetView<HomeController> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text(
+                      const Text(
                         "Presence History",
                         style: TextStyle(
                           fontFamily: "poppins",
@@ -168,11 +169,11 @@ class HomeView extends GetView<HomeController> {
                         ),
                       ),
                       TextButton(
-                        onPressed: () {},
-                        child: Text("Show All"),
+                        onPressed: () => Get.toNamed(Routes.PRESENCES),
                         style: TextButton.styleFrom(
                           foregroundColor: AppColor.primary,
                         ),
+                        child: const Text("Show All"),
                       ),
                     ],
                   ),

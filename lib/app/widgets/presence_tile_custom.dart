@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fresensi/app/data/app_color.dart';
+import 'package:fresensi/app/routes/app_pages.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 
@@ -10,7 +11,9 @@ class PresenceTileCustom extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {},
+      onTap: () {
+        Get.toNamed(Routes.DETAIL_PRESENCE);
+      },
       borderRadius: BorderRadius.circular(8),
       child: Container(
         width: MediaQuery.of(context).size.width,
@@ -21,7 +24,7 @@ class PresenceTileCustom extends StatelessWidget {
             color: AppColor.primaryExtraSoft,
           ),
         ),
-        padding: EdgeInsets.only(left: 24, top: 20, right: 29, bottom: 20),
+        padding: const EdgeInsets.only(left: 24, top: 20, right: 29, bottom: 20),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -69,6 +72,7 @@ class PresenceTileCustom extends StatelessWidget {
               "Wed, May 4 2023",
               style: TextStyle(
                 fontSize: 10,
+                fontWeight: FontWeight.w600,
                 color: AppColor.secondary,
               ),
             ),
