@@ -144,6 +144,20 @@ class UpdateProfileView extends GetView<UpdateProfileController> {
             hint: 'agus.kumaha@email.com',
             disabled: true,
           ),
+          Center(
+            child: TextButton(
+              onPressed: () async {
+                controller.deleteAvatar();
+              },
+              child: const Text(
+                "Delete Avatar",
+                style: TextStyle(
+                  color: Colors.red,
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+            ),
+          ),
         ],
       ),
     );

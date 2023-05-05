@@ -151,7 +151,7 @@ class HomeView extends GetView<HomeController> {
                       const SizedBox(width: 16),
                       Expanded(
                         child: GestureDetector(
-                          onTap: () {},
+                          onTap: controller.launchOfficeOnMap,
                           child: Container(
                             height: 84,
                             alignment: Alignment.center,
