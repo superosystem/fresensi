@@ -84,7 +84,7 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.DETAIL_PRESENCE,
-      page: () => const DetailPresenceView(),
+      page: () => DetailPresenceView(),
       binding: DetailPresenceBinding(),
     ),
   ];

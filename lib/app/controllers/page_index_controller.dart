@@ -1,7 +1,4 @@
 import 'package:fresensi/app/controllers/presence_controller.dart';
-import 'package:fresensi/app/widgets/toast_custom.dart';
-import 'package:geolocator/geolocator.dart';
-import 'package:flutter/foundation.dart';
 import 'package:fresensi/app/routes/app_pages.dart';
 import 'package:get/get.dart';
 

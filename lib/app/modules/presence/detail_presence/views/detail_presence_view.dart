@@ -1,42 +1,43 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:fresensi/app/data/app_color.dart';
-import 'package:fresensi/app/widgets/presence_tile_custom.dart';
 import 'package:get/get.dart';
-import 'package:syncfusion_flutter_datepicker/datepicker.dart';
+import 'package:intl/intl.dart';
 
 import '../controllers/detail_presence_controller.dart';
 
 class DetailPresenceView extends GetView<DetailPresenceController> {
-  const DetailPresenceView({Key? key}) : super(key: key);
+  final Map<String, dynamic> presenceData = Get.arguments;
+
+  DetailPresenceView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: Text(
-            'DETAIL PRESENCE',
-            style: TextStyle(
-              color: AppColor.secondary,
-              fontSize: 14,
-            ),
-          ),
-          leading: IconButton(
-            onPressed: () => Get.back(),
-            icon: SvgPicture.asset('assets/icons/arrow-left.svg'),
-          ),
-          backgroundColor: AppColor.white,
-          elevation: 0,
-          centerTitle: true,
-          bottom: PreferredSize(
-            preferredSize: const Size.fromHeight(1),
-            child: Container(
-              width: MediaQuery.of(context).size.width,
-              height: 1,
-              color: AppColor.secondaryExtraSoft,
-            ),
+      appBar: AppBar(
+        title: Text(
+          'DETAIL PRESENCE',
+          style: TextStyle(
+            color: AppColor.secondary,
+            fontSize: 14,
           ),
         ),
+        leading: IconButton(
+          onPressed: () => Get.back(),
+          icon: SvgPicture.asset('assets/icons/arrow-left.svg'),
+        ),
+        backgroundColor: AppColor.white,
+        elevation: 0,
+        centerTitle: true,
+        bottom: PreferredSize(
+          preferredSize: const Size.fromHeight(1),
+          child: Container(
+            width: MediaQuery.of(context).size.width,
+            height: 1,
+            color: AppColor.secondaryExtraSoft,
+          ),
+        ),
+      ),
       body: ListView(
         shrinkWrap: true,
         padding: const EdgeInsets.all(20),
@@ -47,9 +48,9 @@ class DetailPresenceView extends GetView<DetailPresenceController> {
             width: MediaQuery.of(context).size.width,
             padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 20),
             decoration: BoxDecoration(
-              color: AppColor.primary,
+              color: AppColor.success,
               borderRadius: BorderRadius.circular(8),
-              border: Border.all(color: AppColor.secondaryExtraSoft, width: 1),
+              border: Border.all(color: AppColor.success, width: 1),
             ),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
@@ -69,14 +70,21 @@ class DetailPresenceView extends GetView<DetailPresenceController> {
                         ),
                         const SizedBox(height: 4),
                         Text(
-                          '08:00 AM',
-                          style: TextStyle(color: AppColor.white, fontSize: 16, fontWeight: FontWeight.w600),
+                          (presenceData["in"] == null)
+                              ? "-"
+                              : DateFormat.jm().format(
+                                  DateTime.parse(presenceData["in"]["date"])),
+                          style: TextStyle(
+                              color: AppColor.white,
+                              fontSize: 16,
+                              fontWeight: FontWeight.w600),
                         ),
                       ],
                     ),
                     // PRESENCE DATE
                     Text(
-                      'Wed, Mei 4 2025',
+                      DateFormat.yMMMMEEEEd()
+                          .format(DateTime.parse(presenceData["date"])),
                       style: TextStyle(color: AppColor.white),
                     ),
                   ],
@@ -89,7 +97,10 @@ class DetailPresenceView extends GetView<DetailPresenceController> {
                 const SizedBox(height: 4),
                 Text(
                   'Outside area presence',
-                  style: TextStyle(color: AppColor.white, fontSize: 16, fontWeight: FontWeight.w600),
+                  style: TextStyle(
+                      color: AppColor.white,
+                      fontSize: 16,
+                      fontWeight: FontWeight.w600),
                 ),
                 const SizedBox(height: 14),
                 Text(
@@ -98,7 +109,9 @@ class DetailPresenceView extends GetView<DetailPresenceController> {
                 ),
                 const SizedBox(height: 4),
                 Text(
-                 'Stasiun Luar Angkasa',
+                  (presenceData["in"] == null)
+                      ? "-"
+                      : "${presenceData["in"]["address"]}",
                   style: TextStyle(
                     color: AppColor.white,
                     fontSize: 16,
@@ -117,7 +130,7 @@ class DetailPresenceView extends GetView<DetailPresenceController> {
             decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.circular(8),
-              border: Border.all(color: AppColor.primary, width: 1),
+              border: Border.all(color: AppColor.error, width: 1),
             ),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
@@ -137,27 +150,39 @@ class DetailPresenceView extends GetView<DetailPresenceController> {
                         ),
                         const SizedBox(height: 4),
                         Text(
-                          '05:00 PM',
-                          style: TextStyle(color: AppColor.secondary, fontSize: 16, fontWeight: FontWeight.w600),
+                          (presenceData["out"] == null)
+                              ? "-"
+                              : DateFormat.jm().format(
+                                  DateTime.parse(presenceData["out"]["date"])),
+                          style: TextStyle(
+                              color: AppColor.secondary,
+                              fontSize: 16,
+                              fontWeight: FontWeight.w600),
                         ),
                       ],
                     ),
                     //presence date
                     Text(
-                      'Wed, Mei 4 2023',
+                      DateFormat.yMMMMEEEEd()
+                          .format(DateTime.parse(presenceData["date"])),
                       style: TextStyle(color: AppColor.secondary),
                     ),
                   ],
                 ),
                 const SizedBox(height: 14),
                 Text(
-                  'status',
+                  'Status',
                   style: TextStyle(color: AppColor.secondary),
                 ),
                 const SizedBox(height: 4),
                 Text(
-                  'Outside area presence',
-                  style: TextStyle(color: AppColor.secondary, fontSize: 16, fontWeight: FontWeight.w600),
+                  (presenceData["out"]?["in_area"] == true)
+                      ? "In area presence"
+                      : "Outside area presence",
+                  style: TextStyle(
+                      color: AppColor.secondary,
+                      fontSize: 16,
+                      fontWeight: FontWeight.w600),
                 ),
                 const SizedBox(height: 14),
                 Text(
@@ -166,7 +191,9 @@ class DetailPresenceView extends GetView<DetailPresenceController> {
                 ),
                 const SizedBox(height: 4),
                 Text(
-                  'Stasiun Luar Angkasa',
+                  (presenceData["out"] == null)
+                      ? "-"
+                      : "${presenceData["out"]["address"]}",
                   style: TextStyle(
                     color: AppColor.secondary,
                     fontSize: 16,

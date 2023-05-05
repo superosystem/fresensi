@@ -5,7 +5,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 import 'package:fresensi/app/data/constants.dart';
 import 'package:fresensi/app/routes/app_pages.dart';
-import 'package:fresensi/app/widgets/toast_custom.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
@@ -21,7 +20,7 @@ class HomeController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    timer = Timer.periodic(Duration(seconds: 10), (timer) {
+    timer = Timer.periodic(const Duration(seconds: 10), (timer) {
       if (Get.currentRoute == Routes.HOME) {
         _getDistanceToOffice().then((value) {
           officeDistance.value = value;

@@ -6,7 +6,7 @@ class PresenceCardCustom extends StatelessWidget {
   final Map<String, dynamic> user;
   final Map<String, dynamic>? todayPresenceData;
 
-  PresenceCardCustom({super.key, required this.user, this.todayPresenceData});
+  const PresenceCardCustom({super.key, required this.user, this.todayPresenceData});
 
   @override
   Widget build(BuildContext context) {

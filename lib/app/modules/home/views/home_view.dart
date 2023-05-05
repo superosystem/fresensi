@@ -200,7 +200,7 @@ class HomeView extends GetView<HomeController> {
                       if (snapshot.connectionState == ConnectionState.waiting) {
                         return const Center(child: CircularProgressIndicator());
                       }
-                      if (snapshot.connectionState == ConnectionState.done) {
+                      if (snapshot.hasData) {
                         List<QueryDocumentSnapshot<Map<String, dynamic>>>
                             listPresence = snapshot.data!.docs;
                         return ListView.separated(
@@ -219,7 +219,7 @@ class HomeView extends GetView<HomeController> {
                           },
                         );
                       } else {
-                        return const SizedBox();
+                        return const Center(child: Text("Record is not found"),);
                       }
                     }),
               ],
