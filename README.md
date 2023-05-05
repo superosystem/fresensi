@@ -11,3 +11,10 @@ Fresensi Mobile Application
   - [x] Attend
   - [x] View Presences
 - [x] Geo Location
+
+
+## Tech Stack
+
+- Flutter
+- GetX
+- Firebase
